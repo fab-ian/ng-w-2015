@@ -17,4 +17,8 @@ class StudentDecorator < BaseDecorator
     avg = (sum / i) if sum > 0
     '%.2f' % avg
   end
+
+  def birthday
+    object.birthday.strftime('%Y-%m_%d') if object.birthday
+  end
 end
