@@ -2,7 +2,7 @@ puts "Seeds: start"
 TEACHER_TITLES = %w(Dr. Prof. TA)
 User.create!(email: 'admin@admin.com',password: 'adminadmin')
 
-30.times do
+3.times do
   Teacher.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -11,14 +11,14 @@ User.create!(email: 'admin@admin.com',password: 'adminadmin')
 end
 
 teachers = Teacher.all
-20.times do
+5.times do
   SubjectItem.create!(
     title: Faker::Lorem.sentence,
-    teacher: teachers.sample
+    teacher_id: teachers.sample.id
   )
 end
 
-40.times do
+25.times do
   Student.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
@@ -34,8 +34,8 @@ SubjectItem.all.each do |subject_item|
   subject_item.students.each do |student|
     rand(1..5).times do
       subject_item.subject_item_notes << SubjectItemNote.create(student: student,
-                                                                subject_item: subject_item,
-                                                                value: rand(1..6))
+                                                    subject_item_id: subject_item,
+                                                                value: rand(1..6))            
     end
   end
 end
