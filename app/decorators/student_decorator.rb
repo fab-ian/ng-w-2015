@@ -4,5 +4,17 @@ class StudentDecorator < BaseDecorator
   end
 
   def avg_notes(subject_item)
+    sum = 0.00
+    i = 0
+    avg = 0
+    sin = SubjectItemNote.where(student_id: student.id, subject_item_id: subject_item.id)
+    
+    sin.each do |subject_note|
+      sum += subject_note.value
+      i += 1
+    end
+
+    avg = (sum / i) if sum > 0
+    '%.2f' % avg
   end
 end

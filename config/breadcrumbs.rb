@@ -2,6 +2,11 @@ crumb :root do
   link 'RoR Workhops', root_path
 end
 
+crumb :students do
+  link 'Students', students_path
+  parent :root
+end
+
 crumb :student do |student|
   link "#{student.first_name} #{student.last_name}", student_path(student)
   parent :students
@@ -28,4 +33,8 @@ end
 
 crumb :subjects do
   link t('navbar.reports_subjects'), report_subjects_path
+end
+
+crumb :tuitions do
+  link t('navbar.tuitions'), tuitions_path
 end
