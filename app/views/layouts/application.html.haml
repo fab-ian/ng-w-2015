@@ -17,3 +17,8 @@
           .col-xs-10.col-xs-offset-1
             = breadcrumbs separator: " &raquo; "
             = yield
+    %footer
+      :javascript
+        jQuery(document).ready(function(){
+          $('.tuition').dataTable()
+        });

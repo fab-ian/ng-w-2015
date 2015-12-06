@@ -1,0 +1,26 @@
+- breadcrumb :tuitions
+%h3
+  list of payments:  
+%table{:class => "tuition table"}
+  %thead
+    %tr
+      %th
+        Student
+      %th
+        Period
+      %th
+        Payment
+      %th
+        Paid
+  %tbody
+    - tuitions.each do |tuition|
+      %tr
+        %td
+          = tuition.student.decorate.full_name
+        %td
+          = tuition.period
+        %td
+          = tuition.payment
+        %td
+          = tuition.paid
+        

@@ -20,6 +20,9 @@
           %ul.dropdown-menu
             %li{ class: active?(report_subjects_path) }
               = link_to t('navbar.reports_subjects'), report_subjects_path
+        %li{ class: active?(tuitions_path) }
+          = link_to t('navbar.tuitions'), tuitions_path
+              
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li

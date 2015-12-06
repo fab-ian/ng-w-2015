@@ -1,4 +1,14 @@
 puts "Seeds: start"
+
+SubjectItemNote.destroy_all
+SubjectItem.destroy_all
+Teacher.destroy_all
+Tuition.destroy_all
+Student.destroy_all
+User.destroy_all
+
+puts "Seeds: deleted" 
+
 TEACHER_TITLES = %w(Dr. Prof. TA)
 User.create!(email: 'admin@admin.com',password: 'adminadmin')
 
@@ -38,6 +48,21 @@ SubjectItem.all.each do |subject_item|
                                                                 value: rand(1..6))            
     end
   end
+end
+
+Student.all.each do |student|
+  student_id = student.id
+  period = '2015 / 10'
+  payment = ''
+  paid = false
+  
+  r = rand(2)
+  if r == 1
+    payment = "2015-09-#{rand(31)}"
+    paid = true
+  end
+
+  Tuition.create(student_id: student_id, period: period, payment: payment, paid: paid) 
 end
 
 puts "Seeds: done"
